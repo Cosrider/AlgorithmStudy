@@ -1,0 +1,28 @@
+import random
+
+#简单选择排序
+def selectSort1(arr):
+    for i in range(len(arr)-1):
+        for j in range(i+1,len(arr)):
+            if arr[i] > arr[j]:
+                arr[i],arr[j]=arr[j],arr[i]
+
+def selectSort2(arr):
+    for i in range(len(arr)-1):
+        min_index = i
+        #默认第i个最小
+        for j in range(i+1,len(arr)):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        if min_index != i:
+            arr[i],arr[min_index]=arr[min_index],arr[i]
+
+if __name__ =='__main__':
+    arr = [random.randint(10,100) for x in range(10)]
+    print(arr)
+    selectSort1(arr)
+    print(arr)
+    
+    简介:
+        简单选择排序是一种选择排序。每趟从待排序的记录中选出关键字最小的记录，顺序放在已排序的记录序列末尾，直到全部排序结束为止.
+    最好\最坏\平均时间复杂度都是O(n^2),需要一个临时变量保存最小索引,空间复杂度O(1),排序不稳定.
